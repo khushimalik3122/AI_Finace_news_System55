@@ -1,27 +1,37 @@
-🚀 AI-Powered Financial News Intelligence System
-LangGraph
-FastAPI
-Pinecone
-Docker
-Python 3.10+
+# 🚀 AI-Powered Financial News Intelligence System
 
-Track: AI/ML & Financial Technology
-Powered by: Tradl
-Status: ✅ Fully Functional | Ready for Deployment
+[![LangGraph](https://img.shields.io/badge/Framework-LangGraph-blue?style=for-the-badge&logo=python)](https://github.com/langchain-ai/langgraph)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Pinecone](https://img.shields.io/badge/Vector_DB-Pinecone-00D4AA?style=for-the-badge)](https://www.pinecone.io/)
+[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
 
-📖 Executive Summary
-This is an intelligent multi-agent system built with LangGraph that solves the critical problem of information overload in financial markets. With thousands of news articles generated daily from regulatory filings, business media, and analyst reports, traders need systems that can eliminate redundancy, extract actionable insights, and deliver context-aware intelligence.
+> **Track:** AI/ML & Financial Technology  
+> **Powered by:** Tradl  
+> **Status:** ✅ Fully Functional | Ready for Deployment
 
-🎯 Key Achievements
-Feature	Target	Our Achievement	Status
-Deduplication Accuracy	≥95%	97% semantic similarity detection	✅ Exceeded
-Entity Extraction Precision	≥90%	92% NER accuracy	✅ Exceeded
-Query Relevance	Context-aware	Hierarchical entity relationships	✅ Achieved
-Impact Mapping	Confidence scores	Direct (1.0), Sector (0.7), Regulatory (variable)	✅ Achieved
-🏗️ Architecture Overview
-This system implements a stateful multi-agent workflow using LangGraph with three specialized agents:
+---
 
-text
+## 📖 Executive Summary
+
+This is an intelligent **multi-agent system** built with **LangGraph** that solves the critical problem of information overload in financial markets. With thousands of news articles generated daily from regulatory filings, business media, and analyst reports, traders need systems that can eliminate redundancy, extract actionable insights, and deliver context-aware intelligence.
+
+### 🎯 Key Achievements
+
+| Feature | Target | Our Achievement | Status |
+|---------|--------|-----------------|--------|
+| **Deduplication Accuracy** | ≥95% | **97%** semantic similarity detection | ✅ Exceeded |
+| **Entity Extraction Precision** | ≥90% | **92%** NER accuracy | ✅ Exceeded |
+| **Query Relevance** | Context-aware | Hierarchical entity relationships | ✅ Achieved |
+| **Impact Mapping** | Confidence scores | Direct (1.0), Sector (0.7), Regulatory (variable) | ✅ Achieved |
+
+---
+
+## 🏗️ Architecture Overview
+
+This system implements a **stateful multi-agent workflow** using LangGraph with three specialized agents:
+
+```
 ┌─────────────────────────────────────────────────────────────┐
 │                     News Ingestion Pipeline                  │
 │  (Scrapes NSE, BSE, RBI, RSS feeds every 5 minutes)         │
@@ -58,42 +68,51 @@ text
 │  • Hierarchical entity expansion (company → sector)         │
 │  • Returns ranked results with relevance scores             │
 └─────────────────────────────────────────────────────────────┘
-🛠️ Technology Stack
-Component	Technology	Purpose
-Agent Framework	LangGraph	Stateful multi-agent orchestration
-LLM	Google Gemini 2.0 Flash	Entity extraction & reasoning
-Embeddings	sentence-transformers (all-MiniLM-L6-v2)	Semantic similarity
-Vector Database	Pinecone (Serverless)	RAG & similarity search
-Structured Database	PostgreSQL	Relational data storage
-API Framework	FastAPI	High-performance async REST API
-NER	Google Gemini + spaCy fallback	Named Entity Recognition
-Containerization	Docker + Docker Compose	Production-ready deployment
-⚡ Core Capabilities
-1. Intelligent Deduplication
-Problem Solved: Multiple sources covering the same event create noise.
+```
 
-Example:
+---
 
-text
+## 🛠️ Technology Stack
+
+| Component | Technology | Purpose |
+|-----------|-----------|---------|
+| **Agent Framework** | LangGraph | Stateful multi-agent orchestration |
+| **LLM** | Google Gemini 2.0 Flash | Entity extraction & reasoning |
+| **Embeddings** | sentence-transformers (all-MiniLM-L6-v2) | Semantic similarity |
+| **Vector Database** | Pinecone (Serverless) | RAG & similarity search |
+| **Structured Database** | PostgreSQL | Relational data storage |
+| **API Framework** | FastAPI | High-performance async REST API |
+| **NER** | Google Gemini + spaCy fallback | Named Entity Recognition |
+| **Containerization** | Docker + Docker Compose | Production-ready deployment |
+
+---
+
+## ⚡ Core Capabilities
+
+### 1. Intelligent Deduplication
+**Problem Solved:** Multiple sources covering the same event create noise.
+
+**Example:**
+```
 Input Article 1: "RBI increases repo rate by 25 basis points to combat inflation"
 Input Article 2: "Reserve Bank hikes interest rates by 0.25% in surprise move"
 Input Article 3: "Central bank raises policy rate 25bps, signals hawkish stance"
 
 ✅ Output: Single consolidated story (all three identified as duplicates)
-Technical Approach:
+```
 
-Generate embeddings for each article using sentence-transformers
+**Technical Approach:**
+- Generate embeddings for each article using `sentence-transformers`
+- Query Pinecone for semantic similarity (threshold: 0.85)
+- If duplicate detected, link to canonical story instead of creating new entry
 
-Query Pinecone for semantic similarity (threshold: 0.85)
+---
 
-If duplicate detected, link to canonical story instead of creating new entry
+### 2. Entity Extraction & Impact Mapping
+**Problem Solved:** Traders need to know which stocks are impacted by each news event.
 
-2. Entity Extraction & Impact Mapping
-Problem Solved: Traders need to know which stocks are impacted by each news event.
-
-Example:
-
-text
+**Example:**
+```
 Input: "HDFC Bank announces 15% dividend, board approves stock buyback"
 
 Output:
@@ -118,120 +137,133 @@ Output:
     }
   ]
 }
-Confidence Scoring:
+```
 
-Direct mention: 1.0 (company explicitly mentioned)
+**Confidence Scoring:**
+- **Direct mention:** 1.0 (company explicitly mentioned)
+- **Sector-wide impact:** 0.6-0.8 (affects industry peers)
+- **Regulatory impact:** Variable (depends on scope)
 
-Sector-wide impact: 0.6-0.8 (affects industry peers)
+---
 
-Regulatory impact: Variable (depends on scope)
+### 3. Context-Aware Query System
+**Problem Solved:** Simple keyword search misses related news.
 
-3. Context-Aware Query System
-Problem Solved: Simple keyword search misses related news.
+**Query Behavior:**
 
-Query Behavior:
+| Query | Expected Results | Reasoning |
+|-------|-----------------|-----------|
+| `"HDFC Bank news"` | N1, N2, N4 | Direct mentions + Sector-wide banking news |
+| `"Banking sector update"` | N1, N2, N3, N4 | All sector-tagged news across banks |
+| `"RBI policy changes"` | N2 only | Regulator-specific filter |
+| `"Interest rate impact"` | N2, related articles | Semantic theme matching |
 
-Query	Expected Results	Reasoning
-"HDFC Bank news"	N1, N2, N4	Direct mentions + Sector-wide banking news
-"Banking sector update"	N1, N2, N3, N4	All sector-tagged news across banks
-"RBI policy changes"	N2 only	Regulator-specific filter
-"Interest rate impact"	N2, related articles	Semantic theme matching
-Reference Dataset:
+**Reference Dataset:**
+- N1: HDFC Bank announces 15% dividend, board approves stock buyback
+- N2: RBI raises repo rate by 25bps to 6.75%, citing inflation concerns
+- N3: ICICI Bank opens 500 new branches across Tier-2 cities
+- N4: Banking sector NPAs decline to 5-year low, credit growth at 16%
 
-N1: HDFC Bank announces 15% dividend, board approves stock buyback
+**Technical Implementation:**
+- Entity recognition on incoming queries
+- Hierarchical relationship expansion (company → sector → industry)
+- Semantic search using RAG with Pinecone
+- Result ranking by relevance score
 
-N2: RBI raises repo rate by 25bps to 6.75%, citing inflation concerns
+---
 
-N3: ICICI Bank opens 500 new branches across Tier-2 cities
+## 🚀 Quick Start Guide
 
-N4: Banking sector NPAs decline to 5-year low, credit growth at 16%
+### Prerequisites
+- Python 3.10 or higher
+- Docker & Docker Compose (optional, for containerized deployment)
+- Pinecone API Key ([Get free tier here](https://www.pinecone.io/))
+- Google Gemini API Key ([Get here](https://makersuite.google.com/app/apikey))
 
-Technical Implementation:
+---
 
-Entity recognition on incoming queries
+### Installation
 
-Hierarchical relationship expansion (company → sector → industry)
+#### Option 1: Local Setup
 
-Semantic search using RAG with Pinecone
-
-Result ranking by relevance score
-
-🚀 Quick Start Guide
-Prerequisites
-Python 3.10 or higher
-
-Docker & Docker Compose (optional, for containerized deployment)
-
-Pinecone API Key (Get free tier here)
-
-Google Gemini API Key (Get here)
-
-Installation
-Option 1: Local Setup
-Clone the repository:
-
-bash
+1. **Clone the repository:**
+```bash
 git clone https://github.com/your-username/financial-news-agent.git
 cd financial-news-agent
-Create virtual environment:
+```
 
-bash
+2. **Create virtual environment:**
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
+```
 
-bash
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
-Configure environment variables:
-Create a .env file in the root directory:
+```
 
-text
+4. **Configure environment variables:**
+Create a `.env` file in the root directory:
+```env
 GOOGLE_API_KEY=your_gemini_api_key_here
 PINECONE_API_KEY=your_pinecone_api_key_here
 PINECONE_INDEX_NAME=financial-news
 DATABASE_URL=postgresql://user:password@localhost:5432/financedb
-Initialize database:
+```
 
-bash
+5. **Initialize database:**
+```bash
 python scripts/init_db.py
-Run the application:
+```
 
-bash
+6. **Run the application:**
+```bash
 uvicorn app.main:app --reload
-✅ API accessible at: http://localhost:8000
-📚 Interactive docs at: http://localhost:8000/docs
+```
 
-Option 2: Docker Deployment
-Clone and navigate to project:
+✅ **API accessible at:** `http://localhost:8000`  
+📚 **Interactive docs at:** `http://localhost:8000/docs`
 
-bash
+---
+
+#### Option 2: Docker Deployment
+
+1. **Clone and navigate to project:**
+```bash
 git clone https://github.com/your-username/financial-news-agent.git
 cd financial-news-agent
-Configure environment:
-Create .env file with your API keys (same as above)
+```
 
-Build and run containers:
+2. **Configure environment:**
+Create `.env` file with your API keys (same as above)
 
-bash
+3. **Build and run containers:**
+```bash
 docker-compose up --build
-✅ That's it! System is now running with PostgreSQL, Pinecone, and FastAPI.
+```
 
-🧪 API Endpoints
-1. Ingest News Article
-Endpoint: POST /ingest
+✅ **That's it!** System is now running with PostgreSQL, Pinecone, and FastAPI.
 
-Request Body:
+---
 
-json
+## 🧪 API Endpoints
+
+### 1. Ingest News Article
+**Endpoint:** `POST /ingest`
+
+**Request Body:**
+```json
 {
   "title": "HDFC Bank announces 15% dividend",
   "content": "HDFC Bank announced a 15% dividend and board approved stock buyback...",
   "source": "Economic Times",
   "published_at": "2024-12-02T10:30:00Z"
 }
-Response (New Article):
+```
 
-json
+**Response (New Article):**
+```json
 {
   "status": "success",
   "article_id": "art_abc123",
@@ -251,29 +283,34 @@ json
     }
   ]
 }
-Response (Duplicate Detected):
+```
 
-json
+**Response (Duplicate Detected):**
+```json
 {
   "status": "duplicate",
   "original_article_id": "art_xyz789",
   "similarity_score": 0.94,
   "message": "This article is a duplicate of an existing story"
 }
-2. Query News (RAG Search)
-Endpoint: POST /query
+```
 
-Request Body:
+---
 
-json
+### 2. Query News (RAG Search)
+**Endpoint:** `POST /query`
+
+**Request Body:**
+```json
 {
   "query": "Banking sector updates",
   "limit": 10,
   "min_score": 0.5
 }
-Response:
+```
 
-json
+**Response:**
+```json
 {
   "results": [
     {
@@ -303,23 +340,31 @@ json
   ],
   "total_results": 2
 }
-3. Health Check
-Endpoint: GET /health
+```
 
-Response:
+---
 
-json
+### 3. Health Check
+**Endpoint:** `GET /health`
+
+**Response:**
+```json
 {
   "status": "healthy",
   "database": "connected",
   "pinecone": "connected",
   "llm": "operational"
 }
-📊 Demo Scenarios
-Scenario 1: Testing Deduplication
-Ingest original article:
+```
 
-bash
+---
+
+## 📊 Demo Scenarios
+
+### Scenario 1: Testing Deduplication
+
+1. **Ingest original article:**
+```bash
 curl -X POST "http://localhost:8000/ingest" \
   -H "Content-Type: application/json" \
   -d '{
@@ -328,9 +373,10 @@ curl -X POST "http://localhost:8000/ingest" \
     "source": "Economic Times",
     "published_at": "2024-12-02T10:00:00Z"
   }'
-Ingest semantically identical article (different wording):
+```
 
-bash
+2. **Ingest semantically identical article (different wording):**
+```bash
 curl -X POST "http://localhost:8000/ingest" \
   -H "Content-Type: application/json" \
   -d '{
@@ -339,25 +385,29 @@ curl -X POST "http://localhost:8000/ingest" \
     "source": "Business Standard",
     "published_at": "2024-12-02T11:00:00Z"
   }'
-Expected Result: Second article flagged as duplicate with similarity_score: 0.92+
+```
 
-Scenario 2: Testing Context-Aware Retrieval
-Query: "HDFC Bank news"
+**Expected Result:** Second article flagged as duplicate with `similarity_score: 0.92+`
 
-Expected Behavior:
+---
 
-Returns direct mentions of HDFC Bank (confidence: 1.0)
+### Scenario 2: Testing Context-Aware Retrieval
 
-Returns sector-wide banking news (confidence: 0.6-0.8)
+**Query:** "HDFC Bank news"
 
-Does NOT return unrelated news (e.g., pharma sector)
+**Expected Behavior:**
+- Returns direct mentions of HDFC Bank (confidence: 1.0)
+- Returns sector-wide banking news (confidence: 0.6-0.8)
+- Does NOT return unrelated news (e.g., pharma sector)
 
-Scenario 3: Testing Impact Mapping
-Input: "SEBI announces new disclosure norms for listed companies"
+---
 
-Expected Output:
+### Scenario 3: Testing Impact Mapping
 
-json
+**Input:** "SEBI announces new disclosure norms for listed companies"
+
+**Expected Output:**
+```json
 {
   "entities": {
     "regulators": ["SEBI"],
@@ -369,54 +419,53 @@ json
     {"symbol": "TCS", "confidence": 0.5, "impact_type": "regulatory"}
   ]
 }
-🎯 Evaluation Criteria Compliance
-1. Functional Correctness (40%)
-✅ Deduplication: 97% accuracy (target: ≥95%)
-✅ Entity Extraction: 92% precision (target: ≥90%)
-✅ Query Relevance: Context-aware with hierarchical expansion
-✅ Impact Mapping: Confidence scores implemented
+```
 
-2. Technical Implementation (30%)
-✅ LangGraph Design: Stateful multi-agent workflow with 3 specialized agents
-✅ RAG Effectiveness: Pinecone vector DB with semantic search
-✅ Code Quality: Modular architecture, type hints, comprehensive error handling
-✅ Best Practices: Async operations, connection pooling, environment-based config
+---
 
-3. Innovation & Completeness (20%)
-✅ Novel Approaches:
+## 🎯 Evaluation Criteria Compliance
 
-Hierarchical entity relationship mapping
+### 1. Functional Correctness (40%)
+✅ **Deduplication:** 97% accuracy (target: ≥95%)  
+✅ **Entity Extraction:** 92% precision (target: ≥90%)  
+✅ **Query Relevance:** Context-aware with hierarchical expansion  
+✅ **Impact Mapping:** Confidence scores implemented
 
-Dynamic confidence scoring based on impact type
+### 2. Technical Implementation (30%)
+✅ **LangGraph Design:** Stateful multi-agent workflow with 3 specialized agents  
+✅ **RAG Effectiveness:** Pinecone vector DB with semantic search  
+✅ **Code Quality:** Modular architecture, type hints, comprehensive error handling  
+✅ **Best Practices:** Async operations, connection pooling, environment-based config
 
-Real-time deduplication during ingestion
-✅ Feature Completeness: All core capabilities + bonus features implemented
-✅ Bonus Challenges:
+### 3. Innovation & Completeness (20%)
+✅ **Novel Approaches:** 
+  - Hierarchical entity relationship mapping
+  - Dynamic confidence scoring based on impact type
+  - Real-time deduplication during ingestion
+✅ **Feature Completeness:** All core capabilities + bonus features implemented  
+✅ **Bonus Challenges:**
+  - ✅ Sentiment analysis with historical price impact correlation
+  - ✅ WebSocket notifications for breaking news alerts
 
-✅ Sentiment analysis with historical price impact correlation
+### 4. Documentation & Demo (10%)
+✅ **Code Clarity:** Inline comments, docstrings, clean variable naming  
+✅ **Documentation Quality:** This comprehensive README + inline API docs  
+✅ **Demo Effectiveness:** Video walkthrough + live Swagger UI demo
 
-✅ WebSocket notifications for breaking news alerts
+---
 
-4. Documentation & Demo (10%)
-✅ Code Clarity: Inline comments, docstrings, clean variable naming
-✅ Documentation Quality: This comprehensive README + inline API docs
-✅ Demo Effectiveness: Video walkthrough + live Swagger UI demo
+## 🌟 Bonus Features Implemented
 
-🌟 Bonus Features Implemented
-1. Sentiment Analysis with Price Impact
-Description: Predicts potential stock price movement based on news sentiment.
+### 1. Sentiment Analysis with Price Impact
+**Description:** Predicts potential stock price movement based on news sentiment.
 
-Implementation:
+**Implementation:**
+- Sentiment extraction using Gemini (Positive/Negative/Neutral)
+- Historical correlation analysis (past 6 months of price data)
+- Output: Expected price impact percentage
 
-Sentiment extraction using Gemini (Positive/Negative/Neutral)
-
-Historical correlation analysis (past 6 months of price data)
-
-Output: Expected price impact percentage
-
-Example:
-
-json
+**Example:**
+```json
 {
   "article_id": "art_abc123",
   "sentiment": "positive",
@@ -424,14 +473,17 @@ json
   "predicted_price_impact": "+2.3% (based on historical patterns)",
   "confidence": 0.74
 }
-2. Real-Time Alerts via WebSocket
-Description: Push notifications for breaking news.
+```
 
-WebSocket Endpoint: ws://localhost:8000/ws/alerts
+---
 
-Client Example:
+### 2. Real-Time Alerts via WebSocket
+**Description:** Push notifications for breaking news.
 
-javascript
+**WebSocket Endpoint:** `ws://localhost:8000/ws/alerts`
+
+**Client Example:**
+```javascript
 const ws = new WebSocket('ws://localhost:8000/ws/alerts');
 
 ws.onmessage = (event) => {
@@ -439,9 +491,10 @@ ws.onmessage = (event) => {
   console.log('Breaking News:', alert.title);
   console.log('Impacted Stocks:', alert.stocks);
 };
-Alert Payload:
+```
 
-json
+**Alert Payload:**
+```json
 {
   "type": "breaking_news",
   "article_id": "art_xyz123",
@@ -450,8 +503,13 @@ json
   "impacted_stocks": ["HDFCBANK", "ICICIBANK", "AXISBANK"],
   "timestamp": "2024-12-02T15:30:00Z"
 }
-📁 Project Structure
-text
+```
+
+---
+
+## 📁 Project Structure
+
+```
 financial-news-agent/
 ├── app/
 │   ├── agents/                  # LangGraph agent implementations
@@ -489,193 +547,199 @@ financial-news-agent/
 ├── requirements.txt
 ├── .env.example
 └── README.md
-🗂️ Mock News Dataset
-The /data/sample_news.json file contains 35 diverse articles covering:
+```
 
-Banking sector news (HDFC, ICICI, Axis Bank)
+---
 
-IT sector developments (TCS, Infosys, Wipro)
+## 🗂️ Mock News Dataset
 
-Regulatory announcements (RBI, SEBI)
+The `/data/sample_news.json` file contains **35 diverse articles** covering:
+- Banking sector news (HDFC, ICICI, Axis Bank)
+- IT sector developments (TCS, Infosys, Wipro)
+- Regulatory announcements (RBI, SEBI)
+- Market-wide events (budget announcements, inflation data)
 
-Market-wide events (budget announcements, inflation data)
-
-Categories:
-
-Direct company mentions: 15 articles
-
-Sector-wide news: 12 articles
-
-Regulatory updates: 8 articles
+**Categories:**
+- Direct company mentions: 15 articles
+- Sector-wide news: 12 articles
+- Regulatory updates: 8 articles
 
 This dataset is used for:
+1. Testing deduplication accuracy
+2. Validating entity extraction precision
+3. Demonstrating query relevance
 
-Testing deduplication accuracy
+---
 
-Validating entity extraction precision
+## 🎥 Demo Video
 
-Demonstrating query relevance
+**Duration:** 8 minutes  
+**Platform:** YouTube (Unlisted)  
+**Link:** [Watch Demo Video](https://youtu.be/your-demo-video-link)
 
-🎥 Demo Video
-Duration: 8 minutes
-Platform: YouTube (Unlisted)
-Link: Watch Demo Video
+**Timestamp Breakdown:**
+- 0:00 - Introduction & Architecture Overview
+- 1:30 - **Live Demo: Deduplication** (ingesting duplicate articles)
+- 3:00 - **Live Demo: Entity Extraction** (HDFC Bank dividend example)
+- 4:30 - **Live Demo: Context-Aware Queries** (Banking sector search)
+- 6:00 - Code Walkthrough (`graph.py` LangGraph implementation)
+- 7:30 - Bonus Features (Sentiment Analysis + WebSocket Alerts)
 
-Timestamp Breakdown:
+---
 
-0:00 - Introduction & Architecture Overview
+## 🔧 Configuration Options
 
-1:30 - Live Demo: Deduplication (ingesting duplicate articles)
+### Environment Variables
 
-3:00 - Live Demo: Entity Extraction (HDFC Bank dividend example)
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `GOOGLE_API_KEY` | Google Gemini API key | Required |
+| `PINECONE_API_KEY` | Pinecone API key | Required |
+| `PINECONE_INDEX_NAME` | Vector index name | `financial-news` |
+| `DATABASE_URL` | PostgreSQL connection string | `postgresql://localhost/financedb` |
+| `SIMILARITY_THRESHOLD` | Deduplication threshold | `0.85` |
+| `LOG_LEVEL` | Logging verbosity | `INFO` |
+| `PORT` | API server port | `8000` |
 
-4:30 - Live Demo: Context-Aware Queries (Banking sector search)
+---
 
-6:00 - Code Walkthrough (graph.py LangGraph implementation)
+## 🧪 Testing
 
-7:30 - Bonus Features (Sentiment Analysis + WebSocket Alerts)
-
-🔧 Configuration Options
-Environment Variables
-Variable	Description	Default
-GOOGLE_API_KEY	Google Gemini API key	Required
-PINECONE_API_KEY	Pinecone API key	Required
-PINECONE_INDEX_NAME	Vector index name	financial-news
-DATABASE_URL	PostgreSQL connection string	postgresql://localhost/financedb
-SIMILARITY_THRESHOLD	Deduplication threshold	0.85
-LOG_LEVEL	Logging verbosity	INFO
-PORT	API server port	8000
-🧪 Testing
-Run Unit Tests
-bash
+### Run Unit Tests
+```bash
 pytest tests/ -v
-Run Integration Tests
-bash
+```
+
+### Run Integration Tests
+```bash
 pytest tests/integration/ -v --cov=app
-Test Coverage
-bash
+```
+
+### Test Coverage
+```bash
 pytest --cov=app --cov-report=html
-Current Coverage: 87% (Target: >80%)
+```
 
-📈 Performance Metrics
-Metric	Value
-Average ingestion latency	420ms
-Average query latency	180ms
-Deduplication accuracy	97.2%
-Entity extraction precision	92.4%
-Query relevance (NDCG@10)	0.89
-System uptime	99.8%
-🚀 Deployment
-Production Checklist
- Set up production PostgreSQL instance
+**Current Coverage:** 87% (Target: >80%)
 
- Configure Pinecone production index
+---
 
- Set environment variables in deployment platform
+## 📈 Performance Metrics
 
- Enable HTTPS/TLS certificates
+| Metric | Value |
+|--------|-------|
+| Average ingestion latency | 420ms |
+| Average query latency | 180ms |
+| Deduplication accuracy | 97.2% |
+| Entity extraction precision | 92.4% |
+| Query relevance (NDCG@10) | 0.89 |
+| System uptime | 99.8% |
 
- Configure CORS for web clients
+---
 
- Set up monitoring (Prometheus + Grafana)
+## 🚀 Deployment
 
- Configure log aggregation (ELK stack)
+### Production Checklist
+- [ ] Set up production PostgreSQL instance
+- [ ] Configure Pinecone production index
+- [ ] Set environment variables in deployment platform
+- [ ] Enable HTTPS/TLS certificates
+- [ ] Configure CORS for web clients
+- [ ] Set up monitoring (Prometheus + Grafana)
+- [ ] Configure log aggregation (ELK stack)
+- [ ] Set up backup strategy for database
+- [ ] Implement rate limiting for API endpoints
+- [ ] Configure auto-scaling rules
 
- Set up backup strategy for database
+### Recommended Platforms
+- **Docker/Kubernetes:** Full control, scalable
+- **AWS Fargate:** Managed containers
+- **Google Cloud Run:** Serverless, auto-scaling
+- **Railway/Render:** Quick deployment for demos
 
- Implement rate limiting for API endpoints
+---
 
- Configure auto-scaling rules
+## 🤝 Contributing
 
-Recommended Platforms
-Docker/Kubernetes: Full control, scalable
-
-AWS Fargate: Managed containers
-
-Google Cloud Run: Serverless, auto-scaling
-
-Railway/Render: Quick deployment for demos
-
-🤝 Contributing
 Contributions are welcome! Please follow these guidelines:
 
-Fork the repository
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Create a feature branch (git checkout -b feature/amazing-feature)
+**Code Standards:**
+- Follow PEP 8 style guide
+- Add unit tests for new features
+- Update documentation
+- Run `black` formatter before committing
 
-Commit changes (git commit -m 'Add amazing feature')
+---
 
-Push to branch (git push origin feature/amazing-feature)
+## 📄 License
 
-Open a Pull Request
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Code Standards:
+---
 
-Follow PEP 8 style guide
+## 👥 Team
 
-Add unit tests for new features
+**Developer:** [Your Name]  
+**Email:** [your.email@example.com]  
+**GitHub:** [@your-username](https://github.com/your-username)  
+**LinkedIn:** [Your Profile](https://linkedin.com/in/your-profile)
 
-Update documentation
+---
 
-Run black formatter before committing
+## 🙏 Acknowledgments
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **Tradl** for organizing this hackathon
+- **LangChain** team for LangGraph framework
+- **Pinecone** for vector database infrastructure
+- **Google** for Gemini API access
+- **NSE India, BSE India, RBI** for data sources
 
-👥 Team
-Developer: [Your Name]
-Email: [your.email@example.com]
-GitHub: @your-username
-LinkedIn: Your Profile
+---
 
-🙏 Acknowledgments
-Tradl for organizing this hackathon
+## 📚 References
 
-LangChain team for LangGraph framework
+### Documentation
+- [LangGraph Documentation](https://python.langchain.com/docs/langgraph)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [Pinecone Documentation](https://docs.pinecone.io/)
+- [sentence-transformers Guide](https://www.sbert.net/)
 
-Pinecone for vector database infrastructure
+### Research Papers
+- "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (Lewis et al., 2020)
+- "Named Entity Recognition in Financial Documents" (Alvarado et al., 2015)
+- "Semantic Textual Similarity for Document Deduplication" (Zhao et al., 2021)
 
-Google for Gemini API access
+---
 
-NSE India, BSE India, RBI for data sources
+## 📞 Support & Questions
 
-📚 References
-Documentation
-LangGraph Documentation
-
-FastAPI Documentation
-
-Pinecone Documentation
-
-sentence-transformers Guide
-
-Research Papers
-"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" (Lewis et al., 2020)
-
-"Named Entity Recognition in Financial Documents" (Alvarado et al., 2015)
-
-"Semantic Textual Similarity for Document Deduplication" (Zhao et al., 2021)
-
-📞 Support & Questions
 For questions or issues:
+1. **Check the documentation** in this README
+2. **Search existing issues** on GitHub
+3. **Open a new issue** with detailed description
+4. **Contact hackathon organizers** via official channels
 
-Check the documentation in this README
+---
 
-Search existing issues on GitHub
+## 🏆 Submission Information
 
-Open a new issue with detailed description
+**Hackathon:** AI/ML & Financial Technology Track  
+**Submission Date:** [To be filled]  
+**Demo Video:** [YouTube Link]  
+**Live Demo:** [Deployment URL if available]  
+**Presentation Deck:** [Link to PDF]
 
-Contact hackathon organizers via official channels
-
-🏆 Submission Information
-Hackathon: AI/ML & Financial Technology Track
-Submission Date: [To be filled]
-Demo Video: [YouTube Link]
-Live Demo: [Deployment URL if available]
-Presentation Deck: [Link to PDF]
+---
 
 <div align="center">
-Made with ❤️ for Tradl Hackathon
+
+**Made with ❤️ for Tradl Hackathon**
 
 ⭐ Star this repository if you found it helpful!
 
