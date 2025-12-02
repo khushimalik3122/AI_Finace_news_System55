@@ -1,0 +1,10 @@
+langgraph
+langchain
+langchain-openai
+fastapi
+uvicorn
+sentence-transformers
+pinecone # or chromadb
+psycopg2-binary  # for PostgreSQL
+pydantic
+python-dotenv
