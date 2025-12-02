@@ -685,10 +685,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-**Developer:** [Your Name]  
-**Email:** [your.email@example.com]  
-**GitHub:** [@your-username](https://github.com/your-username)  
-**LinkedIn:** [Your Profile](https://linkedin.com/in/your-profile)
+**Developer:** [KhushiMalik]  
+**Email:** [khushimalik511263@gmail.com]  
+**GitHub:** [@your-username](https://github.com/khushimalik3122/AI_Finace_news_System55)
+**LinkedIn:** [Your Profile](https://www.linkedin.com/in/khushi-6b972b280/)
 
 ---
 
@@ -730,10 +730,9 @@ For questions or issues:
 ## 🏆 Submission Information
 
 **Hackathon:** AI/ML & Financial Technology Track  
-**Submission Date:** [To be filled]  
-**Demo Video:** [YouTube Link]  
-**Live Demo:** [Deployment URL if available]  
-**Presentation Deck:** [Link to PDF]
+**Submission Date:** [till 4th dec 2026]  
+**Demo Video:** [YouTube Link]   
+**Presentation Deck:** [[Link to PDF](https://1drv.ms/p/c/730e47dee34147ae/IQDnbAv9QLf9Q4eT9qVFIN-qAXUtPGF5zHbRuajStoYkoHA?e=MUeBDy)]
 
 ---
 
