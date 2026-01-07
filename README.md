@@ -1,33 +1,28 @@
-# 🚀 AI-Powered Financial News Intelligence System
+#  AI-Powered Financial News Intelligence System
 
-[![LangGraph](https://img.shields.io/badge/Framework-LangGraph-blue?style=for-the-badge&logo=python)](https://github.com/langchain-ai/langgraph)
-[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Pinecone](https://img.shields.io/badge/Vector_DB-Pinecone-00D4AA?style=for-the-badge)](https://www.pinecone.io/)
-[![Docker](https://img.shields.io/badge/Container-Docker-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
 
 > **Track:** AI/ML & Financial Technology  
 > **Powered by:** Tradl  
-> **Status:** ✅ Fully Functional | Ready for Deployment
+> **Status:**  Fully Functional | Ready for Deployment
 
 ---
 
-## 📖 Executive Summary
+## Summary
 
 This is an intelligent **multi-agent system** built with **LangGraph** that solves the critical problem of information overload in financial markets. With thousands of news articles generated daily from regulatory filings, business media, and analyst reports, traders need systems that can eliminate redundancy, extract actionable insights, and deliver context-aware intelligence.
 
-### 🎯 Key Achievements
+###  Achievements
 
 | Feature | Target | Our Achievement | Status |
 |---------|--------|-----------------|--------|
-| **Deduplication Accuracy** | ≥95% | **97%** semantic similarity detection | ✅ Exceeded |
-| **Entity Extraction Precision** | ≥90% | **92%** NER accuracy | ✅ Exceeded |
-| **Query Relevance** | Context-aware | Hierarchical entity relationships | ✅ Achieved |
-| **Impact Mapping** | Confidence scores | Direct (1.0), Sector (0.7), Regulatory (variable) | ✅ Achieved |
+| **Deduplication Accuracy** | ≥95% | **97%** semantic similarity detection | Exceeded |
+| **Entity Extraction Precision** | ≥90% | **92%** NER accuracy |  Exceeded |
+| **Query Relevance** | Context-aware | Hierarchical entity relationships | Achieved |
+| **Impact Mapping** | Confidence scores | Direct (1.0), Sector (0.7), Regulatory (variable) | Achieved |
 
 ---
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 This system implements a **stateful multi-agent workflow** using LangGraph with three specialized agents:
 
@@ -72,7 +67,7 @@ This system implements a **stateful multi-agent workflow** using LangGraph with 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
@@ -87,7 +82,7 @@ This system implements a **stateful multi-agent workflow** using LangGraph with 
 
 ---
 
-## ⚡ Core Capabilities
+##  Core Capabilities
 
 ### 1. Intelligent Deduplication
 **Problem Solved:** Multiple sources covering the same event create noise.
@@ -98,7 +93,7 @@ Input Article 1: "RBI increases repo rate by 25 basis points to combat inflation
 Input Article 2: "Reserve Bank hikes interest rates by 0.25% in surprise move"
 Input Article 3: "Central bank raises policy rate 25bps, signals hawkish stance"
 
-✅ Output: Single consolidated story (all three identified as duplicates)
+Output: Single consolidated story (all three identified as duplicates)
 ```
 
 **Technical Approach:**
@@ -172,7 +167,7 @@ Output:
 
 ---
 
-## 🚀 Quick Start Guide
+##  Quick Start Guide
 
 ### Prerequisites
 - Python 3.10 or higher
@@ -222,8 +217,8 @@ python scripts/init_db.py
 uvicorn app.main:app --reload
 ```
 
-✅ **API accessible at:** `http://localhost:8000`  
-📚 **Interactive docs at:** `http://localhost:8000/docs`
+**API accessible at:** `http://localhost:8000`  
+**Interactive docs at:** `http://localhost:8000/docs`
 
 ---
 
@@ -243,11 +238,11 @@ Create `.env` file with your API keys (same as above)
 docker-compose up --build
 ```
 
-✅ **That's it!** System is now running with PostgreSQL, Pinecone, and FastAPI.
+**That's it!** System is now running with PostgreSQL, Pinecone, and FastAPI.
 
 ---
 
-## 🧪 API Endpoints
+## API Endpoints
 
 ### 1. Ingest News Article
 **Endpoint:** `POST /ingest`
@@ -359,7 +354,7 @@ docker-compose up --build
 
 ---
 
-## 📊 Demo Scenarios
+## Demo Scenarios
 
 ### Scenario 1: Testing Deduplication
 
@@ -423,38 +418,38 @@ curl -X POST "http://localhost:8000/ingest" \
 
 ---
 
-## 🎯 Evaluation Criteria Compliance
+## Evaluation Criteria Compliance
 
 ### 1. Functional Correctness (40%)
-✅ **Deduplication:** 97% accuracy (target: ≥95%)  
-✅ **Entity Extraction:** 92% precision (target: ≥90%)  
-✅ **Query Relevance:** Context-aware with hierarchical expansion  
-✅ **Impact Mapping:** Confidence scores implemented
+**Deduplication:** 97% accuracy (target: ≥95%)  
+**Entity Extraction:** 92% precision (target: ≥90%)  
+**Query Relevance:** Context-aware with hierarchical expansion  
+**Impact Mapping:** Confidence scores implemented
 
 ### 2. Technical Implementation (30%)
-✅ **LangGraph Design:** Stateful multi-agent workflow with 3 specialized agents  
-✅ **RAG Effectiveness:** Pinecone vector DB with semantic search  
-✅ **Code Quality:** Modular architecture, type hints, comprehensive error handling  
-✅ **Best Practices:** Async operations, connection pooling, environment-based config
+**LangGraph Design:** Stateful multi-agent workflow with 3 specialized agents  
+**RAG Effectiveness:** Pinecone vector DB with semantic search  
+**Code Quality:** Modular architecture, type hints, comprehensive error handling  
+**Best Practices:** Async operations, connection pooling, environment-based config
 
 ### 3. Innovation & Completeness (20%)
-✅ **Novel Approaches:** 
+**Novel Approaches:** 
   - Hierarchical entity relationship mapping
   - Dynamic confidence scoring based on impact type
   - Real-time deduplication during ingestion
-✅ **Feature Completeness:** All core capabilities + bonus features implemented  
-✅ **Bonus Challenges:**
-  - ✅ Sentiment analysis with historical price impact correlation
-  - ✅ WebSocket notifications for breaking news alerts
+**Feature Completeness:** All core capabilities + bonus features implemented  
+**Bonus Challenges:**
+  - Sentiment analysis with historical price impact correlation
+  -  WebSocket notifications for breaking news alerts
 
 ### 4. Documentation & Demo (10%)
-✅ **Code Clarity:** Inline comments, docstrings, clean variable naming  
-✅ **Documentation Quality:** This comprehensive README + inline API docs  
-✅ **Demo Effectiveness:** Video walkthrough + live Swagger UI demo
+**Code Clarity:** Inline comments, docstrings, clean variable naming  
+**Documentation Quality:** This comprehensive README + inline API docs  
+**Demo Effectiveness:** Video walkthrough + live Swagger UI demo
 
 ---
 
-## 🌟 Bonus Features Implemented
+##  Bonus Features Implemented
 
 ### 1. Sentiment Analysis with Price Impact
 **Description:** Predicts potential stock price movement based on news sentiment.
@@ -507,7 +502,7 @@ ws.onmessage = (event) => {
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 financial-news-agent/
@@ -551,7 +546,7 @@ financial-news-agent/
 
 ---
 
-## 🗂️ Mock News Dataset
+## Mock News Dataset
 
 The `/data/sample_news.json` file contains **35 diverse articles** covering:
 - Banking sector news (HDFC, ICICI, Axis Bank)
@@ -571,7 +566,7 @@ This dataset is used for:
 
 ---
 
-## 🎥 Demo Video
+## Demo Video
 
 **Duration:** 8 minutes  
 **Platform:** YouTube (Unlisted)  
@@ -587,7 +582,7 @@ This dataset is used for:
 
 ---
 
-## 🔧 Configuration Options
+##  Configuration Options
 
 ### Environment Variables
 
@@ -603,7 +598,7 @@ This dataset is used for:
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Run Unit Tests
 ```bash
@@ -624,7 +619,7 @@ pytest --cov=app --cov-report=html
 
 ---
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 | Metric | Value |
 |--------|-------|
@@ -637,7 +632,7 @@ pytest --cov=app --cov-report=html
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### Production Checklist
 - [ ] Set up production PostgreSQL instance
@@ -659,7 +654,7 @@ pytest --cov=app --cov-report=html
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these guidelines:
 
@@ -677,13 +672,13 @@ Contributions are welcome! Please follow these guidelines:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 👥 Team
+##  Team
 
 **Developer:** [KhushiMalik]  
 **Email:** [khushimalik511263@gmail.com]  
@@ -692,7 +687,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Tradl** for organizing this hackathon
 - **LangChain** team for LangGraph framework
@@ -702,7 +697,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📚 References
+##  References
 
 ### Documentation
 - [LangGraph Documentation](https://python.langchain.com/docs/langgraph)
@@ -717,7 +712,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support & Questions
+##  Support & Questions
 
 For questions or issues:
 1. **Check the documentation** in this README
@@ -727,7 +722,7 @@ For questions or issues:
 
 ---
 
-## 🏆 Submission Information
+##  Submission Information
 
 **Hackathon:** AI/ML & Financial Technology Track  
 **Submission Date:** [till 4th dec 2026]  
@@ -738,8 +733,8 @@ For questions or issues:
 
 <div align="center">
 
-**Made with ❤️ for Tradl Hackathon**
+**Made with  for Tradl Hackathon**
 
-⭐ Star this repository if you found it helpful!
+Star this repository if you found it helpful!
 
 </div>
